@@ -3,9 +3,16 @@ package com.gc.docswallet.presentation
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import com.gc.docswallet.ui.pink
+import com.gc.docswallet.utils.ChewyFontFamily
 
 
 //
@@ -17,8 +24,18 @@ import androidx.compose.ui.graphics.Color
 fun MainScreenView() {
 
     Box(
-        modifier = Modifier.fillMaxSize().background(Color.Black)
-    ) {}
+        modifier = Modifier.fillMaxSize().background(pink).statusBarsPadding()
+    ) {
+
+        Text(
+            text = "DocsWallet",
+            color = Color.White,
+            fontSize = MaterialTheme.typography.headlineLarge.fontSize,
+            fontFamily = ChewyFontFamily(),
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.align(Alignment.TopCenter)
+        )
+    }
 
 
 }
