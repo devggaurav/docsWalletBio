@@ -1,7 +1,11 @@
 package com.gc.docswallet
 
-interface Platform {
-    val name: String
+enum class Platform {
+    Android,
+    IOS,
+    Desktop,
+    Web,
+
 }
 
 expect fun getPlatform(): Platform
