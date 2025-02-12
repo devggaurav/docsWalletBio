@@ -14,9 +14,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.gc.docswallet.presentation.common.SoftWaveBox
 import com.gc.docswallet.presentation.common.SoundWaveSpacer
 import com.gc.docswallet.presentation.common.WavySpacer
 import com.gc.docswallet.ui.pink
+import com.gc.docswallet.ui.yellow
 import com.gc.docswallet.utils.ChewyFontFamily
 
 
@@ -41,10 +43,15 @@ fun MainScreenView() {
             modifier = Modifier.align(Alignment.TopCenter)
         )
 
-        SoundWaveSpacer(
+        SoftWaveBox(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(20.dp) // Adjust height to fit wave better
+                .height(600.dp)
+                .align(Alignment.BottomCenter),
+            waveAmplitude = 15f,
+            waveFrequency = 50f,
+            waveColor = Color.Black,
+            backgroundColor = yellow
         )
     }
 
