@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.gc.docswallet.presentation.common.SoftWaveBox
 import com.gc.docswallet.presentation.common.SoundWaveSpacer
 import com.gc.docswallet.presentation.common.WavySpacer
@@ -25,6 +26,8 @@ import com.gc.docswallet.ui.pink
 import com.gc.docswallet.ui.yellow
 import com.gc.docswallet.utils.ChewyFontFamily
 import com.gc.docswallet.utils.FeaturesList
+import com.gc.docswallet.utils.responsiveFontSize
+import com.gc.docswallet.utils.responsiveHeaderFontSize
 
 
 //
@@ -47,24 +50,24 @@ fun MainScreenView() {
             Text(
                 text = "DocsWallet",
                 color = Color.White,
-                fontSize = MaterialTheme.typography.headlineLarge.fontSize,
+                fontSize = responsiveHeaderFontSize().sp,
                 fontFamily = ChewyFontFamily(),
                 fontWeight = FontWeight.Bold,
-                )
+            )
 
 
-        LazyColumn {
-            items(FeaturesList.features){ feature ->
-                Text(
-                    text = feature,
-                    color = Color.White,
-                    fontSize = MaterialTheme.typography.bodyLarge.fontSize,
-                    fontFamily = ChewyFontFamily(),
-                    fontWeight = FontWeight.Bold,
-                )
+            LazyColumn {
+                items(FeaturesList.features) { feature ->
+                    Text(
+                        text = feature,
+                        color = Color.White,
+                        fontSize = responsiveFontSize().sp,
+                        fontFamily = ChewyFontFamily(),
+                        fontWeight = FontWeight.Bold,
+                    )
 
+                }
             }
-        }
 
         }
 

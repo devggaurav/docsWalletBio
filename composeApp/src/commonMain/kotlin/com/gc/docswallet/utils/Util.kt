@@ -1,8 +1,11 @@
 package com.gc.docswallet.utils
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import com.gc.docswallet.Platform
+import com.gc.docswallet.getPlatform
 import org.jetbrains.compose.resources.Font
 import docswalletinfo.composeapp.generated.resources.Res
 import docswalletinfo.composeapp.generated.resources.pacifico_Regular
@@ -15,3 +18,25 @@ import docswalletinfo.composeapp.generated.resources.pacifico_Regular
 
 @Composable
 fun ChewyFontFamily() = FontFamily(Font(Res.font.pacifico_Regular))
+
+
+@Composable
+fun responsiveFontSize(): Float {
+    val platform = remember { getPlatform() }
+    return when (platform) {
+        Platform.Web -> 34f // Tablets or Web
+        Platform.Desktop -> 18f // Larger phones
+        else -> 16f // Default for small screens
+    }
+}
+
+
+@Composable
+fun responsiveHeaderFontSize(): Float {
+    val platform = remember { getPlatform() }
+    return when (platform) {
+        Platform.Web -> 42f // Tablets or Web
+        Platform.Desktop -> 34f // Larger phones
+        else -> 30f // Default for small screens
+    }
+}
