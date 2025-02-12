@@ -1,11 +1,15 @@
 package com.gc.docswallet.presentation
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,6 +24,7 @@ import com.gc.docswallet.presentation.common.WavySpacer
 import com.gc.docswallet.ui.pink
 import com.gc.docswallet.ui.yellow
 import com.gc.docswallet.utils.ChewyFontFamily
+import com.gc.docswallet.utils.FeaturesList
 
 
 //
@@ -34,14 +39,34 @@ fun MainScreenView() {
         modifier = Modifier.fillMaxSize().background(pink).statusBarsPadding()
     ) {
 
-        Text(
-            text = "DocsWallet",
-            color = Color.White,
-            fontSize = MaterialTheme.typography.headlineLarge.fontSize,
-            fontFamily = ChewyFontFamily(),
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.align(Alignment.TopCenter)
-        )
+        Column(
+            modifier = Modifier.fillMaxWidth().align(Alignment.TopCenter),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "DocsWallet",
+                color = Color.White,
+                fontSize = MaterialTheme.typography.headlineLarge.fontSize,
+                fontFamily = ChewyFontFamily(),
+                fontWeight = FontWeight.Bold,
+                )
+
+
+        LazyColumn {
+            items(FeaturesList.features){ feature ->
+                Text(
+                    text = feature,
+                    color = Color.White,
+                    fontSize = MaterialTheme.typography.bodyLarge.fontSize,
+                    fontFamily = ChewyFontFamily(),
+                    fontWeight = FontWeight.Bold,
+                )
+
+            }
+        }
+
+        }
 
         SoftWaveBox(
             modifier = Modifier
