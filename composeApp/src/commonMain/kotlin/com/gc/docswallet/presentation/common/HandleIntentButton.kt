@@ -8,5 +8,5 @@ package com.gc.docswallet.presentation.common
 
 expect class HandleIntentButton {
 
-    fun openPlayStore()
+    fun openPlayStore(url : String)
 }

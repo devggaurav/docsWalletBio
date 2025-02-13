@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.gc.docswallet.presentation.common.HandleIntentButton
 import com.gc.docswallet.presentation.common.SoftWaveBox
 import com.gc.docswallet.presentation.common.SoundWaveSpacer
 import com.gc.docswallet.presentation.common.WavySpacer
@@ -29,6 +30,7 @@ import com.gc.docswallet.utils.ChewyFontFamily
 import com.gc.docswallet.utils.FeaturesList
 import com.gc.docswallet.utils.responsiveFontSize
 import com.gc.docswallet.utils.responsiveHeaderFontSize
+import org.koin.compose.viewmodel.koinViewModel
 
 
 //
@@ -37,7 +39,9 @@ import com.gc.docswallet.utils.responsiveHeaderFontSize
 //
 
 @Composable
-fun MainScreenView() {
+fun MainScreenView(
+    viewModel: MainViewModel = koinViewModel()
+) {
 
     Box(
         modifier = Modifier.fillMaxSize().background(pink).statusBarsPadding()
@@ -71,7 +75,7 @@ fun MainScreenView() {
             }
 
          Button(
-             onClick = { /*TODO*/ },
+             onClick = { viewModel.openUrl() },
              modifier = Modifier
 
          )   {
