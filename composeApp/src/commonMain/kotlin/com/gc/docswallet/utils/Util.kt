@@ -8,6 +8,7 @@ import com.gc.docswallet.Platform
 import com.gc.docswallet.getPlatform
 import org.jetbrains.compose.resources.Font
 import docswalletinfo.composeapp.generated.resources.Res
+import docswalletinfo.composeapp.generated.resources.overlock_BoldItalic
 import docswalletinfo.composeapp.generated.resources.pacifico_Regular
 
 
@@ -18,6 +19,9 @@ import docswalletinfo.composeapp.generated.resources.pacifico_Regular
 
 @Composable
 fun ChewyFontFamily() = FontFamily(Font(Res.font.pacifico_Regular))
+
+@Composable
+fun OverLockFontFamily() = FontFamily(Font(Res.font.overlock_BoldItalic))
 
 
 @Composable

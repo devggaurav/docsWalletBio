@@ -28,6 +28,7 @@ import com.gc.docswallet.ui.pink
 import com.gc.docswallet.ui.yellow
 import com.gc.docswallet.utils.ChewyFontFamily
 import com.gc.docswallet.utils.FeaturesList
+import com.gc.docswallet.utils.OverLockFontFamily
 import com.gc.docswallet.utils.responsiveFontSize
 import com.gc.docswallet.utils.responsiveHeaderFontSize
 import org.koin.compose.viewmodel.koinViewModel
@@ -67,7 +68,7 @@ fun MainScreenView(
                         text = feature,
                         color = Color.White,
                         fontSize = responsiveFontSize().sp,
-                        fontFamily = ChewyFontFamily(),
+                        fontFamily = OverLockFontFamily(),
                         fontWeight = FontWeight.Bold,
                     )
 
