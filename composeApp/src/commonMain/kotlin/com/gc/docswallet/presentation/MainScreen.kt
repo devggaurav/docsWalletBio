@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -55,14 +56,17 @@ fun MainScreenView(
         ) {
             Text(
                 text = "DocsWallet",
-                color = Color.White,
+                color = Color.Black,
                 fontSize = responsiveHeaderFontSize().sp,
                 fontFamily = ChewyFontFamily(),
                 fontWeight = FontWeight.Bold,
             )
 
 
-            LazyColumn {
+            LazyColumn(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
                 items(FeaturesList.features) { feature ->
                     Text(
                         text = feature,
@@ -70,26 +74,27 @@ fun MainScreenView(
                         fontSize = responsiveFontSize().sp,
                         fontFamily = OverLockFontFamily(),
                         fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(vertical = 2.dp)
                     )
 
                 }
             }
 
-         Button(
-             onClick = { viewModel.openUrl() },
-             modifier = Modifier
+            Button(
+                onClick = { viewModel.openUrl() },
+                modifier = Modifier
 
-         )   {
-             Text("Download")
+            ) {
+                Text("Download")
 
-         }
+            }
 
         }
 
         SoftWaveBox(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(600.dp)
+                .height(550.dp)
                 .align(Alignment.BottomCenter),
             waveAmplitude = 15f,
             waveFrequency = 50f,
