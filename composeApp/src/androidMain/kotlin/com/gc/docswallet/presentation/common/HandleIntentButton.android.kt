@@ -7,13 +7,13 @@ import android.net.Uri
 
 actual class HandleIntentButton(val context: Context) {
 
-    actual fun openPlayStore(packageName: String) {
-        require(packageName.isNotBlank()) { "Package name cannot be empty or blank" }
+    actual fun openPlayStore(url: String) {
+        require(url.isNotBlank()) { "Package name cannot be empty or blank" }
 
         try {
-            context.startActivity(createPlayStoreIntent(packageName))
+            context.startActivity(createPlayStoreIntent("com.gc.docswallet"))
         } catch (e: ActivityNotFoundException) {
-            context.startActivity(createWebIntent(packageName))
+            context.startActivity(createWebIntent("com.gc.docswallet"))
         }
     }
 

@@ -12,7 +12,7 @@ import com.gc.docswallet.presentation.common.HandleIntentButton
 class MainViewModel(
     private val handleIntentButton: HandleIntentButton
 ) : ViewModel() {
-    val url = "https://play.google.com/store/apps/details?id=com.gc.docswallet"
+    val url = "https://play.google.com/store/apps/details?id=com.gc.documentwallet"
 
     fun openUrl() {
         handleIntentButton.openPlayStore(url)
