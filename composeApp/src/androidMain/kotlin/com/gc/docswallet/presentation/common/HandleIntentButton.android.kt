@@ -13,9 +13,9 @@ actual class HandleIntentButton(val context: Context) {
         require(url.isNotBlank()) { "Package name cannot be empty or blank" }
 
         try {
-            appContext.startActivity(createPlayStoreIntent("com.gc.docswallet"))
+            appContext.startActivity(createPlayStoreIntent("com.gc.documentwallet"))
         } catch (e: ActivityNotFoundException) {
-            appContext.startActivity(createWebIntent("com.gc.docswallet"))
+            appContext.startActivity(createWebIntent("com.gc.documentwallet"))
         }
     }
 
