@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
@@ -28,6 +29,8 @@ import com.gc.docswallet.presentation.common.HandleIntentButton
 import com.gc.docswallet.presentation.common.SoftWaveBox
 import com.gc.docswallet.presentation.common.SoundWaveSpacer
 import com.gc.docswallet.presentation.common.WavySpacer
+import com.gc.docswallet.presentation.common.WithBackgroundItem
+import com.gc.docswallet.presentation.common.WithOutBackgroundItem
 import com.gc.docswallet.ui.pink
 import com.gc.docswallet.ui.yellow
 import com.gc.docswallet.utils.ChewyFontFamily
@@ -73,15 +76,13 @@ fun MainScreenView(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                items(FeaturesList.features) { feature ->
-                    Text(
-                        text = feature,
-                        color = Color.White,
-                        fontSize = responsiveFontSize().sp,
-                        fontFamily = OverLockFontFamily(),
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(vertical = 2.dp)
-                    )
+                itemsIndexed(FeaturesList.features) { index, feature ->
+                    if (index / 2 == 0) {
+                        WithOutBackgroundItem(feature)
+                    } else {
+                        WithBackgroundItem(feature)
+                    }
+
 
                 }
             }
@@ -97,24 +98,7 @@ fun MainScreenView(
 
         }
 
-        SoftWaveBox(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(550.dp).weight(2f),
-            waveAmplitude = 15f,
-            waveFrequency = 50f,
-            waveColor = Color.Black,
-            backgroundColor = yellow
-        ) {
-            Button(
-                onClick = { viewModel.openUrl() },
-                modifier = Modifier
 
-            ) {
-                Text("Download")
-
-            }
-        }
     }
 
 
