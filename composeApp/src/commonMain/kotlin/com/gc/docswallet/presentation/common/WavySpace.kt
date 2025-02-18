@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
@@ -100,12 +101,14 @@ fun SoftWaveBox(
     waveFrequency: Float = 40f, // Controls the width of each wave segment
     waveColor: Color = Color.Black,
     backgroundColor: Color = Color.Gray,
-    strokeWidth: Float = 4f
+    strokeWidth: Float = 4f,
+    view: @Composable () -> Unit = {}
 ) {
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .height(200.dp) // Fixed box height
+            .height(200.dp),
+        contentAlignment = Alignment.Center// Fixed box height
     ) {
         Canvas(modifier = Modifier.matchParentSize()) {
             val path = Path()
@@ -149,5 +152,6 @@ fun SoftWaveBox(
                 style = Stroke(width = strokeWidth)
             )
         }
+        view()
     }
 }
