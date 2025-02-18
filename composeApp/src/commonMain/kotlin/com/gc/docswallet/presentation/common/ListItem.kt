@@ -7,20 +7,26 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.gc.docswallet.Platform
+import com.gc.docswallet.getPlatform
 import com.gc.docswallet.ui.yellow
 import com.gc.docswallet.utils.OverLockFontFamily
 import com.gc.docswallet.utils.responsiveFontSize
+import com.gc.docswallet.utils.responsiveHeight
 import docswalletinfo.composeapp.generated.resources.Res
 import docswalletinfo.composeapp.generated.resources.search_rbg
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
 
@@ -31,7 +37,8 @@ import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun WithOutBackgroundItem(
-    feature: String = "Search from all docs"
+    feature: String = "Search from all docs",
+    res : DrawableResource = Res.drawable.search_rbg
 ) {
 
     Row(
@@ -53,7 +60,7 @@ fun WithOutBackgroundItem(
                 fontSize = responsiveFontSize().sp,
                 fontFamily = OverLockFontFamily(),
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(vertical = 2.dp)
+                modifier = Modifier.padding(vertical = 2.dp, horizontal = 16.dp)
             )
 
 
@@ -66,7 +73,7 @@ fun WithOutBackgroundItem(
         ) {
 
             Image(
-                painter = painterResource(Res.drawable.search_rbg),
+                painter = painterResource(res),
                 contentDescription = "image"
             )
 
@@ -80,13 +87,15 @@ fun WithOutBackgroundItem(
 
 @Composable
 fun WithBackgroundItem(
-    feature: String = "Search from all docs"
+    feature: String = "Search from all docs",
+    res : DrawableResource = Res.drawable.search_rbg
 ) {
+    val platform = remember { getPlatform() }
 
     SoftWaveBoxWithTopBottom (
         modifier = Modifier
             .fillMaxWidth()
-            .height(550.dp),
+            .height(responsiveHeight().dp),
         waveAmplitude = 15f,
         waveFrequency = 50f,
         waveColor = Color.Black,
@@ -94,7 +103,7 @@ fun WithBackgroundItem(
     ) {
 
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().padding(16.dp),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -108,7 +117,7 @@ fun WithBackgroundItem(
             ) {
 
                 Image(
-                    painter = painterResource(Res.drawable.search_rbg),
+                    painter = painterResource(res),
                     contentDescription = "image"
                 )
 
@@ -127,7 +136,7 @@ fun WithBackgroundItem(
                     fontSize = responsiveFontSize().sp,
                     fontFamily = OverLockFontFamily(),
                     fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(vertical = 2.dp)
+                    modifier = Modifier.padding(vertical = 2.dp, horizontal = 16.dp)
                 )
 
 

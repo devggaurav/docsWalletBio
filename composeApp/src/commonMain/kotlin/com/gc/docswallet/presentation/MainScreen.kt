@@ -76,11 +76,11 @@ fun MainScreenView(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                itemsIndexed(FeaturesList.features) { index, feature ->
-                    if (index % 2 == 0) {
-                        WithOutBackgroundItem(feature)
+                items(FeaturesList.features) { feature ->
+                    if (!feature.showBackground) {
+                        WithOutBackgroundItem(feature.features, feature.image)
                     } else {
-                        WithBackgroundItem(feature)
+                        WithBackgroundItem(feature.features, feature.image)
                     }
 
 
