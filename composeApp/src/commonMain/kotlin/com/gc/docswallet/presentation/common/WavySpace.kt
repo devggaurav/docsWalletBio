@@ -155,3 +155,81 @@ fun SoftWaveBox(
         view()
     }
 }
+
+
+@Composable
+fun SoftWaveBoxWithTopBottom(
+    modifier: Modifier = Modifier,
+    waveAmplitude: Float = 10f, // Controls the height of the waves
+    waveFrequency: Float = 40f, // Controls the width of each wave segment
+    waveColor: Color = Color.Black,
+    backgroundColor: Color = Color.Gray,
+    strokeWidth: Float = 4f,
+    view: @Composable () -> Unit = {}
+) {
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .height(200.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Canvas(modifier = Modifier.matchParentSize()) {
+            val path = Path()
+            val width = size.width
+            val height = size.height
+
+            // Start at top-left
+            path.moveTo(0f, waveAmplitude)
+
+            // Draw top wave
+            var x = 0f
+            var isUp = true
+            while (x < width) {
+                val controlX = x + waveFrequency / 2
+                val controlY = if (isUp) 0f else waveAmplitude * 2
+                val endX = x + waveFrequency
+                val endY = waveAmplitude
+
+                path.quadraticTo(controlX, controlY, endX, endY)
+
+                x += waveFrequency
+                isUp = !isUp
+            }
+
+            // Move to bottom-right to start bottom wave
+            path.lineTo(width, height - waveAmplitude)
+
+            // Draw bottom wave (right to left)
+            x = width
+            isUp = true
+            while (x > 0) {
+                val controlX = x - waveFrequency / 2
+                val controlY = if (isUp) height else height - waveAmplitude * 2
+                val endX = x - waveFrequency
+                val endY = height - waveAmplitude
+
+                path.quadraticTo(controlX, controlY, endX, endY)
+
+                x -= waveFrequency
+                isUp = !isUp
+            }
+
+            path.close()
+
+            // Fill the shape
+            drawPath(
+                path = path,
+                color = backgroundColor,
+                style = Fill
+            )
+
+            // Draw the outline
+            drawPath(
+                path = path,
+                color = waveColor,
+                style = Stroke(width = strokeWidth)
+            )
+        }
+        view()
+    }
+}

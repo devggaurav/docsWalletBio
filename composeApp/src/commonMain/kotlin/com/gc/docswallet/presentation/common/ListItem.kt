@@ -83,7 +83,7 @@ fun WithBackgroundItem(
     feature: String = "Search from all docs"
 ) {
 
-    SoftWaveBox(
+    SoftWaveBoxWithTopBottom (
         modifier = Modifier
             .fillMaxWidth()
             .height(550.dp),

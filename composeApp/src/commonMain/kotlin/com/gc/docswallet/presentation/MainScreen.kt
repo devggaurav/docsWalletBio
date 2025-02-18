@@ -77,7 +77,7 @@ fun MainScreenView(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 itemsIndexed(FeaturesList.features) { index, feature ->
-                    if (index / 2 == 0) {
+                    if (index % 2 == 0) {
                         WithOutBackgroundItem(feature)
                     } else {
                         WithBackgroundItem(feature)
