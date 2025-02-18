@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -49,13 +50,13 @@ fun MainScreenView(
 
     val verticalState = rememberScrollState()
 
-    Box(
+    Column(
         modifier = Modifier.fillMaxSize().background(pink).statusBarsPadding()
-            .verticalScroll(verticalState)
+
     ) {
 
         Column(
-            modifier = Modifier.fillMaxWidth().align(Alignment.TopCenter),
+            modifier = Modifier.fillMaxWidth().wrapContentHeight(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -99,13 +100,21 @@ fun MainScreenView(
         SoftWaveBox(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(550.dp)
-                .align(Alignment.BottomCenter),
+                .height(550.dp).weight(2f),
             waveAmplitude = 15f,
             waveFrequency = 50f,
             waveColor = Color.Black,
             backgroundColor = yellow
-        )
+        ) {
+            Button(
+                onClick = { viewModel.openUrl() },
+                modifier = Modifier
+
+            ) {
+                Text("Download")
+
+            }
+        }
     }
 
 

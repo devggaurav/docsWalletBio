@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gc.docswallet.presentation.common.SoftWaveBox
+import com.gc.docswallet.presentation.common.WithOutBackgroundItem
 import com.gc.docswallet.ui.pink
 
 
@@ -42,4 +43,11 @@ fun PreviewSoftWaveBox() {
         Spacer(modifier = Modifier.height(20.dp))
         Text(text = "Content Below the Soft Wave Box", fontSize = 18.sp)
     }
+}
+
+
+@Preview
+@Composable
+fun PreviewItem(){
+    WithOutBackgroundItem()
 }
