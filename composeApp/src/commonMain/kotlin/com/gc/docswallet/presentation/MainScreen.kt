@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -95,7 +96,7 @@ fun MainScreenView(
                             Image(
                                 painter = painterResource(Res.drawable.getiton),
                                 modifier = Modifier.width(200.dp).height(70.dp)
-                                    .padding(top = 10.dp, bottom = 10.dp).clickable {
+                                    .padding(top = 10.dp, bottom = 10.dp, end = 10.dp).clickable {
                                         viewModel.openUrl()
                                     }.align(Alignment.TopEnd),
                                 contentScale = ContentScale.FillBounds,
@@ -128,14 +129,13 @@ fun MainScreenView(
                 )
             }
         },
-        modifier = Modifier,
+        modifier = Modifier.fillMaxWidth(),
         containerColor = pink,
         contentWindowInsets = WindowInsets.safeDrawing
     ) { paddingValues ->
         Column(
-            modifier = Modifier.fillMaxSize().background(pink)
+            modifier = Modifier.background(pink)
                 .padding(paddingValues = paddingValues)
-
         ) {
 
             Column(
