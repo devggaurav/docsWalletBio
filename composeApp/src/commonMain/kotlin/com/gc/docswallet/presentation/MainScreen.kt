@@ -95,7 +95,7 @@ fun MainScreenView(
                         Box(modifier = Modifier.fillMaxWidth().weight(1f)) {
                             Image(
                                 painter = painterResource(Res.drawable.getiton),
-                                modifier = Modifier.width(200.dp).height(70.dp)
+                                modifier = Modifier
                                     .padding(top = 10.dp, bottom = 10.dp, end = 10.dp).clickable {
                                         viewModel.openUrl()
                                     }.align(Alignment.TopEnd),
