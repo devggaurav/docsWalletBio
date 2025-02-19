@@ -28,9 +28,9 @@ fun OverLockFontFamily() = FontFamily(Font(Res.font.overlock_BoldItalic))
 fun responsiveFontSize(): Float {
     val platform = remember { getPlatform() }
     return when (platform) {
-        Platform.Web -> 64f // Tablets or Web
+        Platform.Web -> 70f // Tablets or Web
         Platform.Desktop -> 18f // Larger phones
-        else -> 16f // Default for small screens
+        else -> 20f // Default for small screens
     }
 }
 

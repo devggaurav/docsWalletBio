@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gc.docswallet.Platform
@@ -42,7 +43,7 @@ fun WithOutBackgroundItem(
 ) {
 
     Row(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().padding(16.dp),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -60,6 +61,7 @@ fun WithOutBackgroundItem(
                 fontSize = responsiveFontSize().sp,
                 fontFamily = OverLockFontFamily(),
                 fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
                 modifier = Modifier.padding(vertical = 2.dp, horizontal = 16.dp)
             )
 
@@ -111,7 +113,7 @@ fun WithBackgroundItem(
 
             Box(
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth().padding(10.dp)
                     .weight(1f),
                 contentAlignment = Alignment.Center
             ) {
@@ -136,6 +138,7 @@ fun WithBackgroundItem(
                     fontSize = responsiveFontSize().sp,
                     fontFamily = OverLockFontFamily(),
                     fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
                     modifier = Modifier.padding(vertical = 2.dp, horizontal = 16.dp)
                 )
 

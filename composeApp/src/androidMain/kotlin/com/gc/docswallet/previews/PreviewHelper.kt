@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gc.docswallet.presentation.common.SoftWaveBox
+import com.gc.docswallet.presentation.common.SoundWaveSpacer
 import com.gc.docswallet.presentation.common.WithOutBackgroundItem
 import com.gc.docswallet.ui.pink
 
@@ -49,5 +50,11 @@ fun PreviewSoftWaveBox() {
 @Preview
 @Composable
 fun PreviewItem(){
-    WithOutBackgroundItem()
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+    ) {
+        SoundWaveSpacer( modifier = Modifier.fillMaxWidth().height(100.dp))
+    }
 }

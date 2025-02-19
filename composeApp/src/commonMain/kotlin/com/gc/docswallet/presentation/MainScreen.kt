@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -61,19 +62,40 @@ fun MainScreenView(
 
     Scaffold(
         topBar = {
-            TopAppBar(title = {
-                Text(
-                    text = "DocsWallet",
-                    color = Color.Black,
-                    fontSize = responsiveHeaderFontSize().sp,
-                    fontFamily = ChewyFontFamily(),
-                    fontWeight = FontWeight.Bold,
-                )
-            },
+            TopAppBar(
+                title = {
+                    Column(
+                        modifier = Modifier.fillMaxWidth().wrapContentHeight(),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            text = "DocsWallet",
+                            color = Color.Black,
+                            fontSize = responsiveHeaderFontSize().sp,
+                            fontFamily = ChewyFontFamily(),
+                            fontWeight = FontWeight.Bold,
+
+                            )
+
+                    }
+                },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = pink
                 )
             )
+        },
+        bottomBar = {
+            Column(modifier = Modifier.navigationBarsPadding()) {
+                Button(
+                    onClick = { viewModel.openUrl() },
+                    modifier = Modifier
+
+                ) {
+                    Text("Download")
+
+                }
+            }
         },
         modifier = Modifier,
         containerColor = pink,
@@ -81,7 +103,7 @@ fun MainScreenView(
     ) { paddingValues ->
         Column(
             modifier = Modifier.fillMaxSize().background(pink)
-                .padding(paddingValues = paddingValues)
+                .padding(paddingValues = paddingValues).padding(top = paddingValues.calculateTopPadding())
         ) {
 
             Column(
@@ -95,7 +117,11 @@ fun MainScreenView(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
+                    item {
+                        SoundWaveSpacer(modifier = Modifier.fillMaxWidth().padding(top = 5.dp))
+                    }
                     items(FeaturesList.features) { feature ->
+
                         if (!feature.showBackground) {
                             WithOutBackgroundItem(feature.features, feature.image)
                         } else {
@@ -106,14 +132,6 @@ fun MainScreenView(
                     }
                 }
 
-                Button(
-                    onClick = { viewModel.openUrl() },
-                    modifier = Modifier
-
-                ) {
-                    Text("Download")
-
-                }
 
             }
 
