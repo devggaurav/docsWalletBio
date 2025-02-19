@@ -46,6 +46,7 @@ import com.gc.docswallet.utils.FeaturesList
 import com.gc.docswallet.utils.OverLockFontFamily
 import com.gc.docswallet.utils.responsiveFontSize
 import com.gc.docswallet.utils.responsiveHeaderFontSize
+import com.gc.docswallet.utils.responsiveHeaderHeight
 import org.koin.compose.viewmodel.koinViewModel
 
 
@@ -64,10 +65,9 @@ fun MainScreenView(
         topBar = {
             TopAppBar(
                 title = {
-                    Column(
-                        modifier = Modifier.fillMaxWidth().wrapContentHeight(),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
+                    Box(
+                        modifier = Modifier.fillMaxWidth(),
+                        contentAlignment = Alignment.Center
                     ) {
                         Text(
                             text = "DocsWallet",
@@ -75,14 +75,14 @@ fun MainScreenView(
                             fontSize = responsiveHeaderFontSize().sp,
                             fontFamily = ChewyFontFamily(),
                             fontWeight = FontWeight.Bold,
-
-                            )
+                        )
 
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = pink
-                )
+                ),
+                modifier = Modifier.fillMaxWidth().height(responsiveHeaderHeight().dp)
             )
         },
         bottomBar = {
@@ -103,7 +103,8 @@ fun MainScreenView(
     ) { paddingValues ->
         Column(
             modifier = Modifier.fillMaxSize().background(pink)
-                .padding(paddingValues = paddingValues).padding(top = paddingValues.calculateTopPadding())
+                .padding(paddingValues = paddingValues)
+
         ) {
 
             Column(
@@ -115,7 +116,7 @@ fun MainScreenView(
 
                 LazyColumn(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally
+                    horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     item {
                         SoundWaveSpacer(modifier = Modifier.fillMaxWidth().padding(top = 5.dp))

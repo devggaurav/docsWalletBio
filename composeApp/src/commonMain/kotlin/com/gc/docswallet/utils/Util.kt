@@ -46,6 +46,16 @@ fun responsiveHeaderFontSize(): Float {
 }
 
 @Composable
+fun responsiveHeaderHeight(): Float {
+    val platform = remember { getPlatform() }
+    return when (platform) {
+        Platform.Web -> 68f // Tablets or Web
+        Platform.Desktop -> 38f // Larger phones
+        else -> 35f // Default for small screens
+    }
+}
+
+@Composable
 fun responsiveHeight(): Float {
     val platform = remember { getPlatform() }
     return when (platform) {
