@@ -49,9 +49,9 @@ fun responsiveHeaderFontSize(): Float {
 fun responsiveHeaderHeight(): Float {
     val platform = remember { getPlatform() }
     return when (platform) {
-        Platform.Web -> 68f // Tablets or Web
+        Platform.Web -> 85f // Tablets or Web
         Platform.Desktop -> 38f // Larger phones
-        else -> 35f // Default for small screens
+        else -> 50f // Default for small screens
     }
 }
 

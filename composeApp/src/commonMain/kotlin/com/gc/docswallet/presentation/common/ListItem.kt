@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -50,7 +51,7 @@ fun WithOutBackgroundItem(
 
         Box(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
                 .weight(1f),
             contentAlignment = Alignment.Center
         ) {
@@ -62,7 +63,8 @@ fun WithOutBackgroundItem(
                 fontFamily = OverLockFontFamily(),
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.padding(vertical = 2.dp, horizontal = 16.dp)
+                maxLines = 3,
+                modifier = Modifier.fillMaxSize().padding(vertical = 2.dp, horizontal = 16.dp)
             )
 
 
