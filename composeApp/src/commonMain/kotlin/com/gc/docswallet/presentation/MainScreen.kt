@@ -4,10 +4,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
@@ -16,8 +18,13 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -46,59 +53,72 @@ import org.koin.compose.viewmodel.koinViewModel
 // Copyright (c) 2025 CFA. All rights reserved.
 //
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreenView(
     viewModel: MainViewModel = koinViewModel()
 ) {
 
-    val verticalState = rememberScrollState()
-
-    Column(
-        modifier = Modifier.fillMaxSize().background(pink).statusBarsPadding()
-
-    ) {
-
-        Column(
-            modifier = Modifier.fillMaxWidth().wrapContentHeight(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = "DocsWallet",
-                color = Color.Black,
-                fontSize = responsiveHeaderFontSize().sp,
-                fontFamily = ChewyFontFamily(),
-                fontWeight = FontWeight.Bold,
+    Scaffold(
+        topBar = {
+            TopAppBar(title = {
+                Text(
+                    text = "DocsWallet",
+                    color = Color.Black,
+                    fontSize = responsiveHeaderFontSize().sp,
+                    fontFamily = ChewyFontFamily(),
+                    fontWeight = FontWeight.Bold,
+                )
+            },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = pink
+                )
             )
+        },
+        modifier = Modifier,
+        containerColor = pink,
+        contentWindowInsets = WindowInsets.safeDrawing
+    ) { paddingValues ->
+        Column(
+            modifier = Modifier.fillMaxSize().background(pink)
+                .padding(paddingValues = paddingValues)
+        ) {
 
-
-            LazyColumn(
-                modifier = Modifier.fillMaxWidth(),
+            Column(
+                modifier = Modifier.fillMaxWidth().wrapContentHeight(),
+                verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                items(FeaturesList.features) { feature ->
-                    if (!feature.showBackground) {
-                        WithOutBackgroundItem(feature.features, feature.image)
-                    } else {
-                        WithBackgroundItem(feature.features, feature.image)
-                    }
 
+
+                LazyColumn(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    items(FeaturesList.features) { feature ->
+                        if (!feature.showBackground) {
+                            WithOutBackgroundItem(feature.features, feature.image)
+                        } else {
+                            WithBackgroundItem(feature.features, feature.image)
+                        }
+
+
+                    }
+                }
+
+                Button(
+                    onClick = { viewModel.openUrl() },
+                    modifier = Modifier
+
+                ) {
+                    Text("Download")
 
                 }
-            }
-
-            Button(
-                onClick = { viewModel.openUrl() },
-                modifier = Modifier
-
-            ) {
-                Text("Download")
 
             }
+
 
         }
-
-
     }
 
 
