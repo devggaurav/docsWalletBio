@@ -1,4 +1,4 @@
-# This is a Compose Multiplatform Application targeting Android, iOS, Desktop and Web (purpose to make a info page for an app DocsWallet).
+## This is a Compose Multiplatform Application targeting Android, iOS, Desktop and Web (purpose to make a info page for an app DocsWallet).
 
 
 
@@ -6,9 +6,9 @@
 
 
 [Desktop] 
-# Run using ./gradlew run
+## Run using ./gradlew run
 [Web]
-# Run using ./gradlew wasmJsBrowserDevelopmentRun or ./gradlew wasmJsBrowserRun
+## Run using ./gradlew wasmJsBrowserDevelopmentRun or ./gradlew wasmJsBrowserRun
 
 
 
