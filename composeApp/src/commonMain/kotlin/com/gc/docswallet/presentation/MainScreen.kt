@@ -103,7 +103,7 @@ fun MainScreenView(
                                     modifier = Modifier.width(200.dp).height(70.dp)
                                         .padding(top = 10.dp, bottom = 10.dp).clickable {
                                             viewModel.openUrl()
-                                        },
+                                        }.align(Alignment.TopEnd),
                                     contentScale = ContentScale.FillBounds,
                                     contentDescription = "image"
                                 )

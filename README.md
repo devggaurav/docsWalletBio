@@ -1,21 +1,29 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop.
-
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
-
-* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform, 
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+# This is a Compose Multiplatform Application targeting Android, iOS, Desktop and Web (purpose to make a info page for an app DocsWallet).
 
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html),
-[Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/#compose-multiplatform),
-[Kotlin/Wasm](https://kotl.in/wasm/)…
 
-We would appreciate your feedback on Compose/Web and Kotlin/Wasm in the public Slack channel [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web).
-If you face any issues, please report them on [GitHub](https://github.com/JetBrains/compose-multiplatform/issues).
 
-You can open the web application by running the `:composeApp:wasmJsBrowserDevelopmentRun` Gradle task.
+
+
+[Desktop] 
+# Run using ./gradlew run
+[Web]
+# Run using ./gradlew wasmJsBrowserDevelopmentRun or ./gradlew wasmJsBrowserRun
+
+
+
+## Built With 🛠
+- [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
+- [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - For asynchronous and more..
+- [Android Architecture Components](https://developer.android.com/topic/libraries/architecture) - Collection of libraries that help you design robust, testable, and maintainable apps.
+    - [ViewModel](https://voyager.adriel.cafe/) - Stores UI-related data that isn't destroyed on UI changes using Voyager Lib.
+    - [Koin](https://insert-koin.io/docs/setup/koin/) - Koin for DI.
+    
+
+- [Material Components for Android](https://github.com/material-components/material-components-android) - Modular and customizable Material Design UI components for Android.
+
+
+This app uses [***MVVM (Model View View-Model)***](https://developer.android.com/jetpack/docs/guide#recommended-app-arch) architecture.
+
+
+## 
