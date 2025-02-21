@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -80,7 +81,7 @@ fun MainScreenView(
             TopAppBar(
                 title = {
                     Row(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth().fillMaxHeight(),
                         horizontalArrangement = Arrangement.Start,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
@@ -101,7 +102,7 @@ fun MainScreenView(
                                 Image(
                                     painter = painterResource(Res.drawable.getiton),
                                     modifier = Modifier.width(200.dp).height(70.dp)
-                                        .padding(top = 10.dp, bottom = 10.dp).clickable {
+                                        .padding(top = 10.dp, bottom = 10.dp, end = 10.dp).clickable {
                                             viewModel.openUrl()
                                         }.align(Alignment.TopEnd),
                                     contentScale = ContentScale.FillBounds,
@@ -126,7 +127,7 @@ fun MainScreenView(
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = pink
                 ),
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth().padding(16.dp)
             )
         },
         bottomBar = {

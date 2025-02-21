@@ -6,11 +6,12 @@
 
 
 [Desktop] 
-### Run using ./gradlew run
+### Run using  ./gradlew run
+
 [Web]
-### Run using ./gradlew wasmJsBrowserDevelopmentRun 
+### Run using  ./gradlew wasmJsBrowserDevelopmentRun 
 ## or 
-## ./gradlew wasmJsBrowserRun
+### ./gradlew wasmJsBrowserRun
 
 
 
