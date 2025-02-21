@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import com.gc.docswallet.Platform
 import com.gc.docswallet.getPlatform
 import org.jetbrains.compose.resources.Font
@@ -25,12 +27,29 @@ fun OverLockFontFamily() = FontFamily(Font(Res.font.overlock_BoldItalic))
 
 
 @Composable
-fun responsiveFontSize(): Float {
+fun responsiveFontSize(windowWidth : Dp): Float {
+
+
     val platform = remember { getPlatform() }
+
     return when (platform) {
-        Platform.Web -> 70f // Tablets or Web
-        Platform.Desktop -> 18f // Larger phones
-        else -> 20f // Default for small screens
+        Platform.Web -> when {
+            windowWidth < 600.dp -> 40f
+            windowWidth < 900.dp -> 55f
+            windowWidth < 1200.dp -> 65f
+            else -> 70f
+        }
+        Platform.Desktop -> when {
+            windowWidth < 1024.dp -> 16f
+            windowWidth < 1440.dp -> 18f
+            else -> 20f
+        }
+        else -> when {  // Mobile
+            windowWidth < 360.dp -> 16f
+            windowWidth < 480.dp -> 18f
+            windowWidth < 600.dp -> 20f
+            else -> 22f
+        }
     }
 }
 
