@@ -78,57 +78,52 @@ fun MainScreenView(
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = {
-                    Row(
-                        modifier = Modifier.fillMaxWidth().fillMaxHeight(),
-                        horizontalArrangement = Arrangement.Start,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Box(
-                            modifier = Modifier.fillMaxWidth().weight(1f),
-                        ) {
-                            Text(
-                                text = "DocsWallet",
-                                color = Color.Black,
-                                fontSize = responsiveHeaderFontSize().sp,
-                                fontFamily = ChewyFontFamily(),
-                                fontWeight = FontWeight.Bold,
-                                modifier = Modifier.align(Alignment.TopStart)
-                            )
-                        }
-                        Box(modifier = Modifier.fillMaxWidth().weight(1f)) {
-                            if (currentPlatform == Platform.Web) {
-                                Image(
-                                    painter = painterResource(Res.drawable.getiton),
-                                    modifier = Modifier.width(200.dp).height(70.dp)
-                                        .padding(top = 10.dp, bottom = 10.dp, end = 10.dp).clickable {
-                                            viewModel.openUrl()
-                                        }.align(Alignment.TopEnd),
-                                    contentScale = ContentScale.FillBounds,
-                                    contentDescription = "image"
-                                )
-                            } else {
-                                Image(
-                                    painter = painterResource(Res.drawable.getiton),
-                                    modifier = Modifier
-                                        .padding(top = 10.dp, bottom = 10.dp, end = 10.dp)
-                                        .clickable {
-                                            viewModel.openUrl()
-                                        }.align(Alignment.TopEnd),
-                                    contentScale = ContentScale.FillBounds,
-                                    contentDescription = "image"
-                                )
-                            }
-                        }
-
+            Row(
+                modifier = Modifier.fillMaxWidth().widthIn(min = 200.dp).padding(10.dp)
+                    .statusBarsPadding().wrapContentHeight().background(pink),
+                horizontalArrangement = Arrangement.Start,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Box(
+                    modifier = Modifier.fillMaxWidth().weight(1f),
+                ) {
+                    Text(
+                        text = "DocsWallet",
+                        color = Color.Black,
+                        fontSize = responsiveHeaderFontSize().sp,
+                        fontFamily = ChewyFontFamily(),
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.align(Alignment.TopStart)
+                    )
+                }
+                Box(modifier = Modifier.fillMaxWidth().weight(1f)) {
+                    if (currentPlatform == Platform.Web) {
+                        Image(
+                            painter = painterResource(Res.drawable.getiton),
+                            modifier = Modifier.width(200.dp).height(70.dp)
+                                .padding(top = 10.dp, bottom = 10.dp, end = 10.dp).clickable {
+                                    viewModel.openUrl()
+                                }.align(Alignment.TopEnd),
+                            contentScale = ContentScale.FillBounds,
+                            contentDescription = "image"
+                        )
+                    } else {
+                        Image(
+                            painter = painterResource(Res.drawable.getiton),
+                            modifier = Modifier
+                                .padding(top = 10.dp, bottom = 10.dp, end = 10.dp)
+                                .clickable {
+                                    viewModel.openUrl()
+                                }.align(Alignment.TopEnd),
+                            contentScale = ContentScale.FillBounds,
+                            contentDescription = "image"
+                        )
                     }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = pink
-                ),
-                modifier = Modifier.fillMaxWidth().padding(16.dp)
-            )
+                }
+
+            }
+
+
         },
         bottomBar = {
             Column(
